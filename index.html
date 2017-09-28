@@ -1,1 +1,105 @@
-<h1>Hello World<h1>
+<html> 
+
+<head> 
+     <title> Rock Paper Scissors </title>
+</head>
+
+<body>
+
+<h1> ROCK PAPER SCISSORS </h1>
+<h3> YOU VERSUS THE COMPUTER </h3>
+
+
+<!--BUTTONS -->
+<p>
+ <div class= 'userChoices'>
+    <div id= 'theRock'>
+        <button onclick="rockFunction()">ROCK</button>
+    </div>
+    <div id = 'thePaper'>
+        <button onclick="paperFunction()">PAPER</button>
+    </div>
+    <div id = 'theScissors'>
+        <button onclick="scissorsFunction()">SCISSORS</button>
+    </div>
+ </div>  
+ <p>
+
+
+
+
+<script>
+
+    /* COMPUTER SELECT FUNCTION */
+   var computerChoice = function() {
+        var computerChoice = Math.floor(Math.random()*3)+1;
+        if (computerChoice === 1 ){
+            computerChoice = "rock";
+        } else if (computerChoice === 2){
+            computerChoice = "paper";
+        } else {
+            computerChoice = "scissors";
+        }
+    };
+
+/* BUTTON FUNCTIONS.  PLEASE HELP. */
+
+    var userChoice = function rockFunction() {
+        document.getElementById("theRock").addEventListener("click", function(){
+            userChoice = 'rock';
+        }
+    });
+
+    var userChoice = function paperFunction() {
+        document.getElementById("thePaper").addEventListener("click", function(){
+            userChoice = 'paper';
+        }
+    });
+    var userChoice = function scissorsFunction() {
+        document.getElementById("theScissors").addEventListener("click", function(){
+            userChoice = 'scissors';
+        }
+    });
+
+
+ 
+/* RESULT FUNCTION, WHY DO VARIABLES HAVE TO CHANGE? */
+
+    var result = function(userChoice,computerChoice){
+    
+    if(userChoice === computerChoice){
+        return alert("The result is a tie!");
+    }
+    if(userChoice === "rock"){
+        if(computerChoice === "scissors"){
+            return alert("The computer chooses " + computerChoice + ", rock wins, you win.");
+        }
+        else{
+            return alert("The computer chooses " + computerChoice + ", paper wins, you lose.");
+        }
+    }
+    if(userChoice === "paper"){
+        if(computerChoice === "rock"){
+            return alert("The computer chooses " + computerChoice + ", paper wins, you win.");
+        }
+        else{
+            return alert("The computer chooses " + computerChoice + ", scissors wins, you lose");
+        }
+    } (userChoice === "scissors"){
+        if(computerChoice === "rock"){
+            return alert("The computer chooses " + computerChoice + ", rock wins, you lose.");
+        }
+        else{
+            return alert("The computer chooses " + computerChoice + ", scissors wins, you win.");
+        }
+    }
+};
+    result(userChoice,computerChoice)
+
+
+</script>
+           
+</body>
+
+
+</html>
