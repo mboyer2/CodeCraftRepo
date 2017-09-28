@@ -10,91 +10,97 @@
 <h3> YOU VERSUS THE COMPUTER </h3>
 
 
-<!--BUTTONS -->
-<p>
+<!--BUTTONS. Class will be used to style in .css. Id will be used for addEventListeners in .js-->
+
  <div class= 'userChoices'>
     <div id= 'theRock'>
-        <button onclick="rockFunction()">ROCK</button>
+        <button >ROCK</button>
     </div>
     <div id = 'thePaper'>
-        <button onclick="paperFunction()">PAPER</button>
+        <button>PAPER</button>
     </div>
     <div id = 'theScissors'>
-        <button onclick="scissorsFunction()">SCISSORS</button>
+        <button>SCISSORS</button>  
     </div>
  </div>  
- <p>
+ 
 
 
 
 
 <script>
 
-    /* COMPUTER SELECT FUNCTION */
-   var computerChoice = function() {
-        var computerChoice = Math.floor(Math.random()*3)+1;
-        if (computerChoice === 1 ){
-            computerChoice = "rock";
-        } else if (computerChoice === 2){
-            computerChoice = "paper";
-        } else {
-            computerChoice = "scissors";
-        }
-    };
+    /* COMPUTER SELECT FUNCTION. VAR vs. LET vs. CONST? Im under the understanding that declarations and expressions do not require ";" */
+var computerChoose = function() {
+var computerChoice = Math.floor(Math.random()*3)+1;
+if (computerChoice === 1 ){
+    computerChoice = "rock";
+} else if (computerChoice === 2){
+    computerChoice = "paper";
+} else {
+    computerChoice = "scissors";
+}
+return computerChoice
 
-/* BUTTON FUNCTIONS.  PLEASE HELP. */
+};
+console.log(computerChoose());
 
-    var userChoice = function rockFunction() {
-        document.getElementById("theRock").addEventListener("click", function(){
-            userChoice = 'rock';
-        }
-    });
+/* BUTTON FUNCTIONS.  PLEASE HELP. I want to find the userChoice, which is a result of the button push. onlick? addeventlistener? */
 
-    var userChoice = function paperFunction() {
-        document.getElementById("thePaper").addEventListener("click", function(){
-            userChoice = 'paper';
-        }
-    });
-    var userChoice = function scissorsFunction() {
-        document.getElementById("theScissors").addEventListener("click", function(){
-            userChoice = 'scissors';
-        }
-    });
 
+var computerChoice = computerChoose();
+var userChoice;   
+
+
+document.getElementById("theRock").addEventListener("click", function(){
+    userChoice = 'rock';
+    result(userChoice,computerChoice);
+})
+document.getElementById("thePaper").addEventListener("click", function(){
+    userChoice = 'paper';
+    result(userChoice,computerChoice);
+
+})
+document.getElementById("theScissors").addEventListener("click", function(){
+    userChoice = 'scissors';
+    result(userChoice,computerChoice);
+
+})
+    
 
  
-/* RESULT FUNCTION, WHY DO VARIABLES HAVE TO CHANGE? */
+/* RESULT FUNCTION, WHY DO VARIABLES HAVE TO CHANGE? Do I need more variables than userChoices and computerChoice? Im under the understanding that declarations and expressions do not require ";"*/
 
-    var result = function(userChoice,computerChoice){
+var result = function(userChoice,computerChoice){
     
     if(userChoice === computerChoice){
-        return alert("The result is a tie!");
+         document.write("The result is a tie!")
     }
-    if(userChoice === "rock"){
+    else if(userChoice === "rock"){
         if(computerChoice === "scissors"){
-            return alert("The computer chooses " + computerChoice + ", rock wins, you win.");
+             document.write("The computer chooses " + computerChoice + ", rock wins, you win.");
         }
         else{
-            return alert("The computer chooses " + computerChoice + ", paper wins, you lose.");
+             document.write("The computer chooses " + computerChoice + ", paper wins, you lose.");
         }
     }
-    if(userChoice === "paper"){
+    else if(userChoice === "paper"){
         if(computerChoice === "rock"){
-            return alert("The computer chooses " + computerChoice + ", paper wins, you win.");
+             document.write("The computer chooses " + computerChoice + ", paper wins, you win.");
         }
         else{
-            return alert("The computer chooses " + computerChoice + ", scissors wins, you lose");
+             document.write("The computer chooses " + computerChoice + ", scissors wins, you lose");
         }
-    } (userChoice === "scissors"){
+    }
+    else if(userChoice === "scissors"){
         if(computerChoice === "rock"){
-            return alert("The computer chooses " + computerChoice + ", rock wins, you lose.");
+             document.write("The computer chooses " + computerChoice + ", rock wins, you lose.");
         }
         else{
-            return alert("The computer chooses " + computerChoice + ", scissors wins, you win.");
+             document.write("The computer chooses " + computerChoice + ", scissors wins, you win.");
         }
     }
 };
-    result(userChoice,computerChoice)
 
 
 </script>
