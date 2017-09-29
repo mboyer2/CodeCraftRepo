@@ -2,6 +2,7 @@
 
 <head> 
      <title> Rock Paper Scissors </title>
+     <link <link href="rps6.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -11,19 +12,17 @@
 
 
 <!--BUTTONS. Class will be used to style in .css. Id will be used for addEventListeners in .js-->
+<div class= 'userChoices'>
+   
+    <div id ='theRock'> <img src = https://scontent.fapa1-2.fna.fbcdn.net/v/t1.0-9/22050314_10108707151769870_4288740755456086964_n.jpg?oh=72028c61fc6605e47161a8e15188a181&oe=5A50745C>
+    </div>
+    <div id = 'thePaper'><img src = https://scontent.fapa1-2.fna.fbcdn.net/v/t1.0-9/22090136_10108707151330750_784516551918550262_n.jpg?oh=85553d03a975525e4c5d524c71f5824c&oe=5A8137F0>
+    </div>
+    <div id = 'theScissors'><img src = https://scontent.fapa1-2.fna.fbcdn.net/v/t1.0-9/22089079_10108707151954500_7913171381241154687_n.jpg?oh=789882f6055c3bc8d5d66a81c04f5e4b&oe=5A3EC14D>
+    </div>
+      
+</div>
 
- <div class= 'userChoices'>
-    <div id= 'theRock'>
-        <button >ROCK</button>
-    </div>
-    <div id = 'thePaper'>
-        <button>PAPER</button>
-    </div>
-    <div id = 'theScissors'>
-        <button>SCISSORS</button>  
-    </div>
- </div>  
- 
 
 
 
@@ -31,7 +30,10 @@
 <script>
 
     /* COMPUTER SELECT FUNCTION. VAR vs. LET vs. CONST? Im under the understanding that declarations and expressions do not require ";" */
+console.log('starting')
 var computerChoose = function() {
+    console.log('starting computerChoose')
+
 var computerChoice = Math.floor(Math.random()*3)+1;
 if (computerChoice === 1 ){
     computerChoice = "rock";
@@ -43,67 +45,118 @@ if (computerChoice === 1 ){
 return computerChoice
 
 };
+    console.log('bdfore choice')
+
 console.log(computerChoose());
 
 /* BUTTON FUNCTIONS.  PLEASE HELP. I want to find the userChoice, which is a result of the button push. onlick? addeventlistener? */
 
+console.log('declaring variables')
 
 var computerChoice = computerChoose();
-var userChoice;   
+var userChoice; 
+var userScore = 0
+var computerScore = 0
+var ties = 0
+var rounds = 1  
+console.log('variables', computerChoice, userChoice, userScore, computerScore, ties, rounds)
+
 
 
 document.getElementById("theRock").addEventListener("click", function(){
+    console.log('clicked rock')
+
     userChoice = 'rock';
     result(userChoice,computerChoice);
+    
 })
 document.getElementById("thePaper").addEventListener("click", function(){
+        console.log('clicked paper')
+
     userChoice = 'paper';
     result(userChoice,computerChoice);
-
+    
 })
 document.getElementById("theScissors").addEventListener("click", function(){
+        console.log('clicked scissors')
+
     userChoice = 'scissors';
     result(userChoice,computerChoice);
-
 })
     
-
- 
 /* RESULT FUNCTION, WHY DO VARIABLES HAVE TO CHANGE? Do I need more variables than userChoices and computerChoice? Im under the understanding that declarations and expressions do not require ";"*/
 
+
 var result = function(userChoice,computerChoice){
+        console.log('entering result fn')
+
     
     if(userChoice === computerChoice){
-         document.write("The result is a tie!")
+        ties++;
+        rounds++;
+         document.getElementById("outputDiv").innerHTML = "The result is a tie!"
+         
     }
     else if(userChoice === "rock"){
         if(computerChoice === "scissors"){
-             document.write("The computer chooses " + computerChoice + ", rock wins, you win.");
+            userScore++;
+            rounds++;
+             document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", rock wins, you win.";
+
         }
         else{
-             document.write("The computer chooses " + computerChoice + ", paper wins, you lose.");
+            computerScore++;
+            rounds++;
+             document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", paper wins, you lose.";
         }
     }
     else if(userChoice === "paper"){
         if(computerChoice === "rock"){
-             document.write("The computer chooses " + computerChoice + ", paper wins, you win.");
+            userScore++;
+            rounds++;
+             document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", paper wins, you win.";
         }
         else{
-             document.write("The computer chooses " + computerChoice + ", scissors wins, you lose");
+            computerScore++;
+            rounds++;
+             document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", scissors wins, you lose";
         }
     }
     else if(userChoice === "scissors"){
         if(computerChoice === "rock"){
-             document.write("The computer chooses " + computerChoice + ", rock wins, you lose.");
+            computerScore++;
+            rounds++;
+             document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", rock wins, you lose.";
         }
         else{
-             document.write("The computer chooses " + computerChoice + ", scissors wins, you win.");
+            userScore++;
+            rounds++;
+             document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", scissors wins, you win.";
         }
     }
+        console.log('end sf result fn with:', userScore, rounds, computerScore, ties)
+
+        document.getElementById("score").innerHTML = userScore + "-" + ties + "-" + computerScore
+        document.getElementById("rounds").innerHTML = rounds
+
+        computerChoose()
+            console.log('after compchoose', computerChoice)
+
 };
 
 
+    console.log('end of script')
+
 </script>
+<br>
+<div id="outputDiv"></div>
+<br>
+<div id="score"></div>
+<br>
+<div id = "rounds"></div>
+
+
+
            
 </body>
 
