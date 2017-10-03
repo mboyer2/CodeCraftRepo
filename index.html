@@ -9,47 +9,58 @@
 	font-size: 75px;
 	padding: -50;
 }
-
 h3 {
 	text-align: center;
 	font-size: 30px;
 }
-
 #outputDiv {
 	text-align: center;
 	font-size: 30px;
-
 }
-
 table.userChoices { 
 transform: scale(0.7);
-
 }
-
 .userChoices {
 	display: flex;
   	align-items: center;
   	justify-content: center;
 }
-
 .userChoices > div {
 	margin: 0px 20px;
 }
-
 #score {
 	text-align: center;
+    font-weight: bold;
+    font-size: 80;
 }
-
 #rounds {
 	text-align: center;
+    font-weight: bold;
+    font-size: 80;
+
+}
+
+#scoreText {
+    text-align: center;
+    word-spacing: 0.8em;
+    font-weight: bold;
+}
+
+#roundsText{
+     text-align: center;
+    word-spacing: 0.8em;
+    font-weight: bold;
 }
      </style>
      </head>
+
 
 <body>
 
 <h1> ROCK PAPER SCISSORS </h1>
 <h3> YOU VERSUS THE COMPUTER </h3>
+
+
 
 
 <!--BUTTONS. Class will be used to style in .css. Id will be used for addEventListeners in .js-->
@@ -64,17 +75,14 @@ transform: scale(0.7);
       
 </div>
 
-
-
-
-
 <script>
+   
 
-    /* COMPUTER SELECT FUNCTION. VAR vs. LET vs. CONST? Im under the understanding that declarations and expressions do not require ";" */
+
 console.log('starting')
+
 var computerChoose = function() {
     console.log('starting computerChoose')
-
 var computerChoice = Math.floor(Math.random()*3)+1;
 if (computerChoice === 1 ){
     computerChoice = "rock";
@@ -84,16 +92,14 @@ if (computerChoice === 1 ){
     computerChoice = "scissors";
 }
 return computerChoice
-
 };
-    console.log('bdfore choice')
-
+    console.log('before userchoice')
 console.log(computerChoose());
 
-/* BUTTON FUNCTIONS.  PLEASE HELP. I want to find the userChoice, which is a result of the button push. onlick? addeventlistener? */
+
+
 
 console.log('declaring variables')
-
 var computerChoice = computerChoose();
 var userChoice; 
 var userScore = 0
@@ -106,31 +112,27 @@ console.log('variables', computerChoice, userChoice, userScore, computerScore, t
 
 document.getElementById("theRock").addEventListener("click", function(){
     console.log('clicked rock')
-
     userChoice = 'rock';
     result(userChoice,computerChoice);
     
 })
 document.getElementById("thePaper").addEventListener("click", function(){
         console.log('clicked paper')
-
     userChoice = 'paper';
     result(userChoice,computerChoice);
     
 })
 document.getElementById("theScissors").addEventListener("click", function(){
         console.log('clicked scissors')
-
     userChoice = 'scissors';
     result(userChoice,computerChoice);
 })
     
-/* RESULT FUNCTION, WHY DO VARIABLES HAVE TO CHANGE? Do I need more variables than userChoices and computerChoice? Im under the understanding that declarations and expressions do not require ";"*/
 
 
-var result = function(userChoice,computerChoice){
+
+var result = function(){
         console.log('entering result fn')
-
     
     if(userChoice === computerChoice){
         ties++;
@@ -143,7 +145,6 @@ var result = function(userChoice,computerChoice){
             userScore++;
             rounds++;
              document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", rock wins, you win.";
-
         }
         else{
             computerScore++;
@@ -175,29 +176,42 @@ var result = function(userChoice,computerChoice){
              document.getElementById("outputDiv").innerHTML = "The computer chooses " + computerChoice + ", scissors wins, you win.";
         }
     }
-        console.log('end sf result fn with:', userScore, rounds, computerScore, ties)
-
+        console.log('end of result fn with:', userScore, rounds, computerScore, ties)
+        
         document.getElementById("score").innerHTML = userScore + "-" + ties + "-" + computerScore
         document.getElementById("rounds").innerHTML = rounds
+        
 
-        computerChoose()
+       computerChoice = computerChoose()
+
+
+        
+
             console.log('after compchoose', computerChoice)
-
 };
-
-
     console.log('end of script')
-
 </script>
+
+<br>
 <br>
 <div id="outputDiv"></div>
 <br>
+<br>
+<br>
+<br>
+<br>
+
+<div id = "scoreText"> WINS TIES LOSSES </div>
+   
+
 <div id="score"></div>
 <br>
+
+<div id = "roundsText"> ROUND <div>
 <div id = "rounds"></div>
 
 
-
+ 
            
 </body>
 
