@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<title>Calculator</title>
+	<head>
+		<h1>CALCULATOR</h1>
+	</head>
+	<body>
+		
+		<style>
+		</style>
+
+		<form id = theCalculator>
+  			number one:
+  			<input type="text" id="numOne">
+
+  			<select id= sign>
+			  <option value= "+" > + </option>
+			  <option value= "-"> - </option>
+			  <option value= "*"> x </option>
+			  <option value= "/"> / </option>
+			</select>
+  
+  			number two:
+ 		    <input type="text" id="numTwo">
+
+ 		    <input type="button" id="btn" value= "Calculate">
+ 		    <br>
+ 		    <br>
+ 		    answer:
+ 		    <input type="text" id="displayResult" onclick= "getResult()">
+		</form>
+
+	<script>
+
+
+
+		function getResult(){
+
+			var num1;
+			var num2;
+			var result;
+			var sign;
+
+		    function getNum1(){
+		    	num1 = document.getElementbyId("numOne").value;
+		    	return Number(num1);
+		    	console.log("num1");
+		    }
+
+		    function getNum2(){
+		    	num2 = document.getElementbyId("numTwo").value;
+		    	return Number(num2);
+		    	console.log("num2");
+		    }
+
+		    function getSign(){
+		    	sign = document.getElementbyId("sign").value;
+		    	return sign;
+		    	console.log("sign");
+		    }
+
+		    function getResult(){
+		    	document.getElementbyId("btn").value = result;
+		    }
+
+		    function calculate(){
+		    	var num1 = getNum1();
+		    	var num2 = getNum2();
+
+			    if(getSign() == " * "){
+			    	result = (num1 * num2);
+			    } else if (getSign() == "-"){
+			    	result = (num1 - num2);
+			    } else if (getSign() == "*"){
+			    	result = (num1 * num2);
+			    } else {
+			    	result = (num1 + num2);
+				}		
+		    return result;
+			}
+
+		calculate();
+
+		}
+
+	</script>
+
+	
+	
+	</body>
+
+</html>
