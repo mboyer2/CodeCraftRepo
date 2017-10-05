@@ -32,21 +32,18 @@ transform: scale(0.7);
 #score {
 	text-align: center;
     font-weight: bold;
-    font-size: 80;
+    font-size: 80px;
 }
 #rounds {
 	text-align: center;
     font-weight: bold;
-    font-size: 80;
-
+    font-size: 80px;
 }
-
 #scoreText {
     text-align: center;
     word-spacing: 0.8em;
     font-weight: bold;
 }
-
 #roundsText{
      text-align: center;
     word-spacing: 0.8em;
@@ -78,10 +75,7 @@ transform: scale(0.7);
 
 <script>
    
-
-
 console.log('starting')
-
 var computerChoose = function() {
     console.log('starting computerChoose')
 var computerChoice = Math.floor(Math.random()*3)+1;
@@ -96,10 +90,6 @@ return computerChoice
 };
     console.log('before userchoice')
 console.log(computerChoose());
-
-
-
-
 console.log('declaring variables')
 var computerChoice = computerChoose();
 var userChoice; 
@@ -108,7 +98,6 @@ var computerScore = 0
 var ties = 0
 var rounds = 1  
 console.log('variables', computerChoice, userChoice, userScore, computerScore, ties, rounds)
-
 
 
 document.getElementById("theRock").addEventListener("click", function(){
@@ -129,9 +118,6 @@ document.getElementById("theScissors").addEventListener("click", function(){
     result(userChoice,computerChoice);
 })
     
-
-
-
 var result = function(){
         console.log('entering result fn')
     
@@ -182,12 +168,8 @@ var result = function(){
         document.getElementById("score").innerHTML = userScore + "-" + ties + "-" + computerScore
         document.getElementById("rounds").innerHTML = rounds
         
-
        computerChoice = computerChoose()
-
-
         
-
             console.log('after compchoose', computerChoice)
 };
     console.log('end of script')
