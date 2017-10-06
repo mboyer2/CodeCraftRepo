@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<title>Calculator</title>
+	<head></head>
+	<style>
+	
+	input[name=answer]{
+		color: green;
+		font-size: 20px;
+	}
+	
+	
+	input[type=text]{
+		width: 195px;
+		margin-right: 2px; 
+		background-color: black;
+	}
+	input[type=button]{
+		position: relative;
+		background-color: orange;
+		width: 40px;
+		height: 40px;
+		font-size: 20px;
+		font-weight: 900;
+		border-radius: 8px;
+		margin: 5px;
+	}
+	
+	form[name=calculator] {
+		width: 220px;
+    	height: 275px;
+    	background-color: darkgrey;
+    	border: 2px solid black;
+    	border-radius: 12px;
+    	margin: 50 auto;
+	}
+	form[name=calculator] input[type=text]{
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		height: 30px;
+	}
+	#buttons{
+		margin-left: 4px;
+	}
+	
+	}
+	</style>
+	<body>
+
+		<div class="calcBox"></div>
+			<form name=calculator>
+				<input id="resultBox" type=text name=answer />
+				<br />
+
+				<div id="buttons">
+
+					<input class= "number" type=button value="1" onclick="calculator.answer.value += '1'" />
+					<input class= "number" type=button value="2" onclick="calculator.answer.value += '2'" />
+					<input class= "number" type=button value="3" onclick="calculator.answer.value += '3'" />
+					<input class= "sign" type=button value="+" onclick="calculator.answer.value += '+'" />
+					<br />
+
+					<input class= "number" type=button value="4" onclick="calculator.answer.value += '4'" />
+					<input class= "number" type=button value="5" onclick="calculator.answer.value += '5'" />
+					<input  class= "number" type=button value="6" onclick="calculator.answer.value += '6'" />
+					<input class= "sign" type=button value="-" onclick="calculator.answer.value += '-'" />
+					<br />
+
+					<input class= "number" type=button value="7" onclick="calculator.answer.value += '7'" />
+					<input class= "number" type=button value="8" onclick="calculator.answer.value += '8'" />
+					<input class= "number" type=button value="9" onclick="calculator.answer.value += '9'" />
+					<input class= "sign" type=button value="*" onclick="calculator.answer.value += '*'" />
+					<br />
+
+					<input class= "clear" type=button value="C" onclick="calculator.answer.value = ''" />
+					<input class= "number" type=button value="0" onclick="calculator.answer.value += '0'" />
+					<input id="equal" type=button value="=" />
+
+					<input class= "sign" type=button value="/" onclick="calculator.answer.value += '/'" />
+				<br />
+				</div>
+
+			</form>
+
+	<script>
+		var sign = false;
+		var value1 = false;
+		var value2 = '';
+		var result;
+		var detector = false;
+		var number= document.getElementsByClassName("number")
+		
+
+		
+
+		for (let i = 0; i < number.length; i++){
+			number[i].addEventListener("click", function(event){
+			console.log(sign);
+
+
+				if (detector === true){
+					document.getElementById("resultBox").value = event.target.value;
+					value1 = document.getElementById("resultBox").value; 
+					sign = ''; 
+					console.log(value1)
+					value2 = '';
+					detector = false;
+				}
+
+				else if (value1 === false){
+					value1 = event.target.value;
+					console.log(value1);
+
+				} else if (sign === false){
+					value1 = value1 + event.target.value;
+					console.log( value1);
+
+				}else {
+					value2 = value2 + event.target.value;
+					console.log(value2);
+				} 
+			
+			}) 
+
+
+
+			
+		}
+
+		var signs = document.getElementsByClassName("sign")
+
+		for (let i = 0; i < signs.length; i++){
+			signs[i].addEventListener("click", function(event){
+			console.log(event);
+			sign = event.target.value;
+			console.log(sign);
+
+			})
+		}
+
+
+		console.log(document.getElementById("equal"));
+
+		document.getElementById("equal").addEventListener("click", function(event){
+			console.log(value1, sign, value2)
+			console.log(eval(value1 + sign + value2))
+			result = eval(value1 + sign + value2);
+			console.log(result);
+			document.getElementById("resultBox").value = result;
+			detector = true;
+
+
+		})
+
+	</script>
+
+	</body>
+
+
+</html>
