@@ -10,6 +10,7 @@
 		</style>
 
 		<form id = theCalculator>
+			<fieldset>
   			number one:
   			<input type="text" id="numOne">
 
@@ -28,42 +29,33 @@
  		    <br>
  		    answer:
  		    <input type="text" id="result" >
+ 		</fieldset>
 		</form>
 
 	<script>
-
-
-
 		function getResult(){
-
 			var num1;
 			var num2;
 			var result;
 			var sign;
-
 		    function getNum1(){
-		    	num1 = document.getElementbyId("numOne").value;
+		    	num1 = document.getElementById("numOne").value;
 		    	return Number(num1);
 		    	console.log("num1");
 		    }
-
 		    function getNum2(){
-		    	num2 = document.getElementbyId("numTwo").value;
+		    	num2 = document.getElementById("numTwo").value;
 		    	return Number(num2);
 		    	console.log("num2");
 		    }
-
 		    function getSign(){
-		    	sign = document.getElementbyId("sign").value;
+		    	sign = document.getElementById("sign").value;
 		    	return sign;
 		    	console.log("sign");
 		    }
-//???????????????????????????????????????????????????????????????????
-		    function setResult(){
-		    	document.getElementbyId("result").value = result;
-		    }
-//???????????????????????????????????????????????????????????????????
+
 		    function calculate(){
+
 		    	var num1 = getNum1();
 		    	var num2 = getNum2();
 
@@ -75,14 +67,14 @@
 			    	result = (num1 * num2);
 			    } else {
 			    	result = (num1 + num2);
-				}		
-		    setresult();
+				}
+
+		    	document.getElementById("result").value = result;
+		    		
+		    
 			}
-
 			calculate();
-
 		}
-
 	</script>
 
 	
